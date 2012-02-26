@@ -8,23 +8,29 @@
      <script type="text/javascript" src="groovejoin.js"></script> 
 </head>
 <body onload="sp = getSpotifyApi(1); groovejoin = sp.require('groovejoin'); init();">
+<p><p><br><br>
 <h1 id="header">GrooveJoin</h1>
-
-        <table class="center">
-            <tr><th>Your Last.fm username:</th><th>Your friend's Last.fm username:</a></th>
-            <tr>
-            <td><div class="user_box"><input id="user_name"type="text" name="user_name"/ value="rogueleaderr"></div></td>
-            <td><div class="user_box"><input id="friend_name"type="text" name="friend_name" value="niral"/></div></td>
+<br><br><br><br><br>
+<div id="name_table">        
+<table class="center">
+  <col style="width: 20em;"/>
+  <col span="2" style="width: 20em;" />
+  <tr><th>Your Last.fm username:</th><th>Your friend's Last.fm username:</a></th>
+            <tr></tr><tr></tr>
+            <td><div class="user_box"><input class="superbox" id="user_name"type="text" name="user_name"/ value="rogueleaderr"></div></td>
+            <td><div class="user_box"><input class="superbox" id="friend_name"type="text" name="friend_name"/></div></td>
             </tr>
         </table>
-
-        <button class="new-button" onclick="buildPlaylist('niral')">Find Artists You Both Like</button>
+</div>
+<br>
+        <button class="new-button" id="top_button"  onclick="buildPlaylist()">Find Artists You Both Like</button>
  
-   </script>
-     <div id="playlist_space">It looks like you both like:<p></div>
-        <button class="new-button" onclick="getSongs('niral')">Find Songs You Both Like</button>
-	<div id="song_space"></div>
-	<button class="new-button" onclick="getSpotifyURIs()">Get Spotify URI's</button>
-	<button class="new-button" onclick="loadPlaylist()">Load Playlist</button>
+
+     <div id="playlist_space" display="block">Based on your individual tastes, we're going to make a playlist featuring:</div>
+
+     
+     <div id="song_space"></div>
+
+	<button class="new-button" id="bottom_button" onclick="loadPlaylist()">Load Playlist</button>
 </body>
 </html>
