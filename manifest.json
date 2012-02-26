@@ -10,6 +10,7 @@
 		"en"
 	],
 	"RequiredPermissions": [
-		"http://ws.audioscrobbler.com"
+		"http://ws.audioscrobbler.com",
+        "http://127.0.0.1"
 	]
 }

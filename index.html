@@ -13,17 +13,18 @@
         <table class="center">
             <tr><th>Your Last.fm username:</th><th>Your friend's Last.fm username:</a></th>
             <tr>
-            <td><div class="user_box"><input id="user_name"type="text" name="user_name"/></div></td>
-            <td><div class="user_box"><input id="friend_name"type="text" name="friend_name"/></div></td>
+            <td><div class="user_box"><input id="user_name"type="text" name="user_name"/ value="rogueleaderr"></div></td>
+            <td><div class="user_box"><input id="friend_name"type="text" name="friend_name" value="niral"/></div></td>
             </tr>
         </table>
 
-        <button class="new-button" onclick="playTrack()">Make a Playlist
-
-	</button>
+        <button class="new-button" onclick="buildPlaylist('niral')">Find Artists You Both Like</button>
  
    </script>
-     <div id="playlist_space">
-
+     <div id="playlist_space">It looks like you both like:<p></div>
+        <button class="new-button" onclick="getSongs('niral')">Find Songs You Both Like</button>
+	<div id="song_space"></div>
+	<button class="new-button" onclick="getSpotifyURIs()">Get Spotify URI's</button>
+	<button class="new-button" onclick="loadPlaylist()">Load Playlist</button>
 </body>
 </html>
