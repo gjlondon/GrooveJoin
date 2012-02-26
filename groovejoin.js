@@ -18,26 +18,6 @@ function init() {
     console.log("init()");
 } 
 
-function click_test() {
-    alert("it clicks");
-}
-    
-function test2(){
-    alert("test");
-}
-
-function doSearch(){
-
-    var search = new models.Search("Counting Crows");
-    search.localResults = models.LOCALSEARCHRESULTS.APPEND;
-    console.log(search);
-}
-
-function playTrack(){
-    var t = models.Track.fromURI("spotify:track:3bcYb4HwWlytUFLny0e0Q1");
-    player.play(t);
-    console.log(t);
-}
 
 function getTopArtists1(user, next_user, passed_list ){
     var artist_params = "user.gettopartists&limit=300&page=1&user=" 
@@ -49,11 +29,11 @@ function getTopArtists1(user, next_user, passed_list ){
 
 	req.onreadystatechange = function() {
 
-		console.log(req.status);
+//		console.log(req.status);
 
    		if (req.readyState == 4) {
     		    if (req.status == 200) {
-       			console.log("Search complete!");
+  //     			console.log("Search complete!");
        		//	console.log(req.responseText);
 			var obj = JSON.parse(req.responseText);
 			var list = obj.topartists.artist;
@@ -67,7 +47,7 @@ function getTopArtists1(user, next_user, passed_list ){
 
 			var joint_list = getTopArtist2(next_user, artist_rows);
 			       
-			return joint_list;
+//			return joint_list;
 			//console.log(list.topartists.artist);
      		    }
    		}
@@ -86,11 +66,11 @@ function getTopArtist2(user, passed_list ){
 
 	req.onreadystatechange = function() {
 
-		console.log(req.status);
+//		console.log(req.status);
 
    		if (req.readyState == 4) {
     		    if (req.status == 200) {
-       			console.log("Search complete!");
+  //     			console.log("Search complete!");
 
 			var obj = JSON.parse(req.responseText);
 			var list = obj.topartists.artist;
@@ -136,7 +116,7 @@ function getJoinedList(list1, list2){
     
     globalArtistList = rankedArtists;
     getSongs();
-return joint_list;
+//return joint_list;
 };
 
 function buildPlaylist(user1,user2) {
@@ -163,11 +143,14 @@ function getSongs(){
 //    console.log(globalArtistList);
     var artLen = globalArtistList.length;
     console.log("There will be "+artLen+" artists.");
+    var counter = 0;
     for (i=0;i<globalArtistList.length;i++){
 	if (i===(artLen-1)){
 	    lastSong = true;
 	    console.log("just set lastsong to true because the counter is at "+i);
 	    }
+	counter += 1;
+	console.log("songs run counter is at "+counter);
 	var song = getSong(globalArtistList[i]);
 
 	}
@@ -228,8 +211,8 @@ function shuffle(list) {
 }
 function getSpotifyURIs(){
      
-
-
+    
+    lastURI = false;
     var songLen = globalSongList.length;
     console.log("there are "+songLen+" songs");
 
@@ -270,12 +253,16 @@ function getSpotifyURI(api_request){
 			var list = obj.spotify;
 	//		console.log(list);
 			globalURIBlock.push(list.track.externalids.spotify);
-			console.log("some stuff"+lastURI);
+//			console.log("some stuff"+lastURI);
 	//		if (lastURI===true){
 			    
 	//		    if(playlistLoaded===false){
 				var block = document.getElementById('song_space');
-				block.innerHTML = "<ul>"+globalSongList+"</ul>";
+			var bullet_list = "";
+			for (i=0;i<globalSongList.length;i++){
+			    bullet_list += "<li>"+globalSongList[i][0]+" by "+globalSongList[i][1]+"</li>"
+			    }
+			block.innerHTML = "<ul>"+bullet_list+"</ul>";
 //	var block = get
 				//	loadPlaylist();
 	//			}
